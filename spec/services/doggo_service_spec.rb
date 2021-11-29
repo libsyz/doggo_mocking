@@ -1,9 +1,11 @@
 require 'rails_helper'
 require 'rspec'
 require 'rspec/mocks'
-
+require 'vcr'
+require 'pry-byebug'
 
 describe DoggoService do
+  let(:doggos_response) { DoggoService.call }
   xit 'gets an image from the doggo api' do
     res  = DoggoService.call
     expect(res).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
@@ -38,12 +40,13 @@ describe DoggoService do
       # -----------------
   end
 
-  xit 'gets an image from the doggo api - with VCR' do
-    fake_service = double('FakeDoggoService')
-    allow(fake_service).to receive(:call).and_return("https://images.dog.ceo/breeds/german_shepherd/0001.jpg/")
-    expect(fake_service.call).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
+
+  it 'gets an image from the doggo api - with VCR', :vcr do
+
+
+
+    expect(doggos_response).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
     # this might be useful in an integration scenario
-    # but now it's not testing anything at all
   end
 
 end
