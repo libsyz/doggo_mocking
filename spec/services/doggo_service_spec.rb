@@ -43,8 +43,6 @@ describe DoggoService do
 
   it 'gets an image from the doggo api - with VCR', :vcr do
 
-
-
     expect(doggos_response).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
     # this might be useful in an integration scenario
   end

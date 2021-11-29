@@ -1,5 +1,5 @@
 class DoggosController < ApplicationController
   def index
-    @image = DoggoService.call
+    @image = DoggoService.call['message']
   end
 end
