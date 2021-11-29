@@ -60,3 +60,6 @@ gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 
 gem "httparty", "~> 0.20.0"
+
+gem "rspec", "~> 3.10"
+gem "rspec-rails", "~> 5.0"
