@@ -67,3 +67,7 @@ gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 
 gem "httparty", "~> 0.20.0"
+
+gem "webmock", "~> 3.14"
+
+gem "vcr", "~> 6.0"
