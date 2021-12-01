@@ -6,16 +6,19 @@ require 'pry-byebug'
 
 describe DoggoService do
   let(:doggos_response) { DoggoService.call }
+
+
+
   xit 'gets an image from the doggo api' do
     res  = DoggoService.call
     expect(res).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
     # What's good
-      # hyper realistic
+      # hyper reali stic
     # What's not so good
       # We are actually stressing a real API
   end
 
-  xit 'gets an image from the doggo api - with Env Check' do
+  it 'gets an image from the doggo api - with Env Check' do
     res  = DoggoService.call
     expect(res).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
     # What's good
@@ -26,8 +29,17 @@ describe DoggoService do
       # unscalable
   end
 
-  xit 'gets an image from the doggo api - With Mocks' do
+  it 'gets an image from the doggo api - With Mocks' do
+
+    class FakeDoggoService
+      def self.call
+        "https://images.dog.ceo/breeds/german_shepherd/0001.jpg/"
+      end
+    end
+
+
     fake_service = double('FakeDoggoService')
+    controller = DoggoController.new(fake_service)
     allow(fake_service).to receive(:call).and_return("https://images.dog.ceo/breeds/german_shepherd/0001.jpg/")
     expect(fake_service.call).to match(/https:\/\/images\.dog\.ceo\/breeds\/.+\/.+\.jpg/)
     # What's good

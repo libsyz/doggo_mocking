@@ -26,6 +26,7 @@ RSpec.configure do |config|
     }
     stub_request(:get, "https://dog.ceo/api/breeds/image/random").
       to_return(status: 200, body: doggos_response[:message])
+
   end
 
   # ....
